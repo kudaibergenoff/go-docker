@@ -1,0 +1,28 @@
+version: "3.8"
+services:
+  go-server:
+    container_name: "go-server"
+    build:
+      context: .
+      target: base
+      args:
+        PORT: 8888
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/go/app/base
+    command: "air"
+
+#  db:
+#    container_name: "db"
+#    image: postgres:14
+#    restart: always
+#    tty: true
+#    ports:
+#      - "5432:5432"
+#    volumes:
+#      - ./postgres:/data/postgres
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
