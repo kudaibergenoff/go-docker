@@ -1,7 +1,7 @@
 version: "3.8"
 services:
-  go-server:
-    container_name: "go-server"
+  go-server-base:
+    container_name: "go-server-base"
     build:
       context: .
       target: base
@@ -12,6 +12,28 @@ services:
     volumes:
       - .:/go/app/base
     command: "air"
+
+  go-server-builder:
+    container_name: "go-server-builder"
+    build:
+      context: .
+      target: builder
+      args:
+        PORT: 8888
+    ports:
+      - "8889:8888"
+    command: "./main"
+
+  go-server-prod:
+    container_name: "go-server-prod"
+    build:
+      context: .
+      target: production
+      args:
+        PORT: 8888
+    ports:
+      - "8890:8888"
+    command: "./main"
 
 #  db:
 #    container_name: "db"

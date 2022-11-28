@@ -33,6 +33,7 @@ WORKDIR /go/app/builder
 COPY --from=base /go/app/base /go/app/builder
 
 RUN CGO_ENABLED=0 go build -o main -ldflags "-s -w"
+#RUN CGO_ENABLED=0 GOOS=linux go build -o /main main.go
 
 #
 # Image to RUN go binary

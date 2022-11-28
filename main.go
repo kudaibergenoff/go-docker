@@ -1,9 +1,8 @@
 package main
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func main() {
@@ -29,7 +28,7 @@ func main() {
 
 	r.GET("/test2", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "Test 2 page",
+			"message": "Test 2 test new page!!!",
 		})
 	})
 
